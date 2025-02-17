@@ -65,18 +65,17 @@ public abstract class CrudController <T, D, ID extends Serializable> {
     public ResponseEntity<D> create(@RequestBody @Valid D entity) {
         return ResponseEntity.status(HttpStatus.CREATED).body(convertToDto(getService().save(convertToEntity(entity))));
     }
-    @PutMapping("{id}")
-    public ResponseEntity<D> update(@PathVariable ID id, @RequestBody @Valid D entity) {
-        return ResponseEntity.status(HttpStatus.OK).body(convertToDto(getService().save(convertToEntity(entity))));
-    }
+
     @GetMapping("exists/{id}")
     public ResponseEntity<Boolean> exists(@PathVariable ID id) {
         return ResponseEntity.ok(getService().exists(id));
     }
+
     @GetMapping("count")
     public ResponseEntity<Long> count() {
         return ResponseEntity.ok(getService().count());
     }
+
     @DeleteMapping("{id}")
     public ResponseEntity<Void> delete(@PathVariable ID id) {
         getService().delete(id);

@@ -67,4 +67,6 @@ public abstract class CrudServiceImpl<T, ID extends Serializable>
     public void deleteAll() {
         getRepository().deleteAll();
     }
+
+
 }
